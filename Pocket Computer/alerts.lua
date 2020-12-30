@@ -5,7 +5,7 @@ function setHeader()
 	term.setCursorPos(1, 1)
 	term.setBackgroundColor(colors.gray)
 	term.setTextColor(colors.white)
-	print("Alerts Monitor         ")
+	print("Alerts Monitor            ")
 	term.setCursorPos(xPos, yPos)
 	term.setBackgroundColor(colors.black)
 end
