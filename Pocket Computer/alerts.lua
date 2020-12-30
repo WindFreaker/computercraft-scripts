@@ -2,9 +2,12 @@
 
 function setHeader()
 	local xPos, yPos = term.getCursorPos()
+	term.setCursorPos(1, 1)
 	term.setBackgroundColor(colors.gray)
 	term.setTextColor(colors.white)
 	print("Alerts Monitor         ")
+	term.setCursorPos(xPos, yPos)
+	term.setBackgroundColor(colors.black)
 end
 
 local modem = peripheral.wrap("back")
