@@ -1,4 +1,4 @@
--- wget run https://raw.githubusercontent.com/WindFreaker/computercraft-tests/master/Pocket%20Computer/alerts.lua
+-- https://raw.githubusercontent.com/WindFreaker/computercraft-tests/master/Pocket%20Computer/alerts.lua
 
 function setHeader()
 	local xPos, yPos = term.getCursorPos()

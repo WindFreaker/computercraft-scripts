@@ -1,4 +1,4 @@
--- wget run https://raw.githubusercontent.com/WindFreaker/computercraft-tests/master/Turtle/stripmine.lua
+-- https://raw.githubusercontent.com/WindFreaker/computercraft-tests/master/Turtle/stripmine.lua
 
 otherBlocks = {
 	"minecraft:glass"
