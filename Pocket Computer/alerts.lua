@@ -1,8 +1,8 @@
--- wget run https://pastebin.com/raw/WC5g2u5w
+-- wget run https://raw.githubusercontent.com/WindFreaker/computercraft-tests/master/Pocket%20Computer/alerts.lua
 
 function setHeader()
 	local xPos, yPos = term.getCursorPos()
-	term.setBackgroundColor(colors.grey)
+	term.setBackgroundColor(colors.gray)
 	term.setTextColor(colors.white)
 	print("Alerts Monitor         ")
 end
