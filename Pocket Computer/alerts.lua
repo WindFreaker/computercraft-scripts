@@ -1,6 +1,6 @@
 -- https://raw.githubusercontent.com/WindFreaker/computercraft-tests/master/Pocket%20Computer/alerts.lua
 
-function setHeader()
+local function setHeader ()
 	local xPos, yPos = term.getCursorPos()
 	term.setCursorPos(1, 1)
 	term.setBackgroundColor(colors.gray)
@@ -24,7 +24,7 @@ while true do
 
 	setHeader()
 
-	event, side, recFreq, replyFreq, msg, dist = os.pullEvent("modem_message")
+	local event, side, recFreq, replyFreq, msg, dist = os.pullEvent("modem_message")
 	
 	if colorSwitch then
 		term.setTextColor(colors.green)
