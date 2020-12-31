@@ -1,3 +1,5 @@
+-- https://raw.githubusercontent.com/WindFreaker/computercraft-tests/master/General/data.lua
+
 local function getCaller ()
 	local fileName = debug.getinfo(2).source
 	fileName = string.sub(fileName, 2, -5)
@@ -20,6 +22,6 @@ local function loadVariable (varName)
 end
 
 return {
-	save = saveVariable
+	save = saveVariable,
 	load = loadVariable
 }
