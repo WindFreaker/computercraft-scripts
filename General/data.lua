@@ -1,7 +1,7 @@
 -- https://raw.githubusercontent.com/WindFreaker/computercraft-tests/master/General/data.lua
 
 local function getCaller ()
-	local fileName = debug.getinfo(2).source
+	local fileName = debug.getinfo(3).source
 	fileName = string.sub(fileName, 2, -5)
 	fileName = string.lower(fileName)
 	return fileName
