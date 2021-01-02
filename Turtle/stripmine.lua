@@ -67,7 +67,8 @@ local function mineNearbyBlocks (up, down, left, right)
 		local existDown, dataDown = turtle.inspectDown()
 		if existDown and oreCheck(dataDown) then
 			SAFETY.digDown()
-			if selectCobblestone() then
+			if selectCobblestone() and turtle.down() then
+				turtle.up()
 				turtle.placeDown()
 			end
 		end
@@ -157,7 +158,7 @@ while true do
 	end
 
 	-- breaks the block in front and then takes its place
-	-- using while loop to properly handle blocks such as gravel
+	-- using while loop to properly handle gravity blocks such as gravel
 	while not turtle.forward() do
 		SAFETY.dig()
 	end
@@ -167,14 +168,16 @@ while true do
 	mineNearbyBlocks(false, true, true, true)
 
 	-- breaks the block above and then takes its place
-	SAFETY.digUp()
-	turtle.up()
+	-- using while loop to properly handle gravity blocks such as gravel
+	while not turtle.up() do
+		SAFETY.digUp()
+	end
 
 	-- mines all the blocks except for the one below
 	mineNearbyBlocks(true, false, true, true)
 
 	-- breaks the block in front and then takes its place
-	-- using while loop to properly handle blocks such as gravel
+	-- using while loop to properly handle gravity blocks such as gravel
 	while not turtle.forward() do
 		SAFETY.dig()
 	end
@@ -184,6 +187,7 @@ while true do
 	mineNearbyBlocks(true, false, true, true)
 
 	-- breaks the block below and then takes its place
+	-- while loop not needed as gravity blocks are not an issue
 	turtle.digDown()
 	turtle.down()
 
