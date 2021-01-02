@@ -49,7 +49,7 @@ end
 local function checkFuel (limit)
 	if turtle.getFuelLevel() < limit then
 		if turtle.refuel() then
-			return turtle.getFuelLevel() <= limit
+			return turtle.getFuelLevel() >= limit
 		end
 		return false
 	end
