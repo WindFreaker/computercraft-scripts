@@ -1,3 +1,4 @@
+local safety = require "turtle.safety"
 -- https://raw.githubusercontent.com/WindFreaker/computercraft-tests/master/Turtle/stripmine.lua
 
 local function printAlert (msg)
@@ -18,7 +19,6 @@ local function oreCheck (data)
 
 		for index, value in ipairs(oreBlacklist) do
 			if value == data.name then
-				printAlert("Found " .. value)
 				return false
 			end
 		end
@@ -61,13 +61,13 @@ local function mineNearbyBlocks (up, down, left, right)
 	if up then
 		local existUp, dataUp = turtle.inspectUp()
 		if existUp and oreCheck(dataUp) then
-			turtle.digUp()
+			SAFETY.digUp()
 		end
 	end
 	if down then
 		local existDown, dataDown = turtle.inspectDown()
 		if existDown and oreCheck(dataDown) then
-			turtle.digDown()
+			SAFETY.digDown()
 			if selectCobblestone() then
 				turtle.placeDown()
 			end
@@ -77,7 +77,7 @@ local function mineNearbyBlocks (up, down, left, right)
 		turtle.turnLeft()
 		local existLeft, dataLeft = turtle.inspect()
 		if existLeft and oreCheck(dataLeft) then
-			turtle.dig()
+			SAFETY.dig()
 		end
 		turtle.turnRight()
 	end
@@ -85,7 +85,7 @@ local function mineNearbyBlocks (up, down, left, right)
 		turtle.turnRight()
 		local existRight, dataRight = turtle.inspect()
 		if existRight and oreCheck(dataRight) then
-			turtle.dig()
+			SAFETY.dig()
 		end
 		turtle.turnLeft()
 	end
@@ -110,6 +110,7 @@ end
 
 local tunnelOffset = 0
 WIRELESS = require("wireless")
+SAFETY = require("safety")
 
 -- returns to where last left off
 print("Beginning tunnel traversal...")
@@ -117,14 +118,14 @@ while true do
 
 	-- checks that the turtle isn't going too far (IE leaving loaded chunks)
 	if tunnelOffset > 100 then
-		printAlert("Tunnel finished.")
+		printAlert("Tunnel finished")
 		returnToStart(tunnelOffset)
 		return
 	end
 
 	-- checks fuel level every step of the way
 	if not checkFuel(tunnelOffset + 2) then
-		printAlert("Not enough fuel.")
+		printAlert("Not enough fuel")
 		returnToStart(tunnelOffset)
 		return
 	end
@@ -144,14 +145,14 @@ while true do
 
 	-- checks that the turtle isn't going too far (AKA leaving loaded chunks)
 	if tunnelOffset > 100 then
-		printAlert("Tunnel finished.")
+		printAlert("Tunnel finished")
 		returnToStart(tunnelOffset)
 		return
 	end
 
 	-- checks fuel level on every loop
 	if not checkFuel(tunnelOffset + 5) then
-		printAlert("Not enough fuel.")
+		printAlert("Not enough fuel")
 		returnToStart(tunnelOffset)
 		return
 	end
@@ -159,7 +160,7 @@ while true do
 	-- breaks the block in front and then takes its place
 	-- using while loop to properly handle blocks such as gravel
 	while not turtle.forward() do
-		turtle.dig()
+		SAFETY.dig()
 	end
 	tunnelOffset = tunnelOffset + 1
 
@@ -167,7 +168,7 @@ while true do
 	mineNearbyBlocks(false, true, true, true)
 
 	-- breaks the block above and then takes its place
-	turtle.digUp()
+	SAFETY.digUp()
 	turtle.up()
 
 	-- mines all the blocks except for the one below
@@ -176,7 +177,7 @@ while true do
 	-- breaks the block in front and then takes its place
 	-- using while loop to properly handle blocks such as gravel
 	while not turtle.forward() do
-		turtle.dig()
+		SAFETY.dig()
 	end
 	tunnelOffset = tunnelOffset + 1
 
