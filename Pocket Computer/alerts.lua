@@ -17,6 +17,9 @@ local function setHeader ()
 
 end
 
+-- ONLY FUNCTIONS & DATA FOUND ABOVE
+-- PROGRAM RUN ORDER STARTS HERE
+
 local modem = peripheral.wrap("back")
 modem.open(1)
 
