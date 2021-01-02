@@ -1,22 +1,34 @@
 -- https://raw.githubusercontent.com/WindFreaker/computercraft-tests/master/Turtle/stripmine.lua
 
-otherBlocks = {
+local oreWhitelist = {
 	"minecraft:glass"
+}
+
+local oreBlacklist = {
+	"forbidden_arcanus:stella_arcanum"
 }
 
 local function oreCheck (data)
 	if data.tags["forge:ores"] then
+
+		for index, value in ipairs(oreBlacklist) do
+			if value == data.name then
+				WIRELESS.sendAlert("Found " .. value)
+				return false
+			end
+		end
 		return true
+
 	else
-		-- this code block is useless right now, but could be useful in the future
-		-- it can stay for now but might be wise to remove if performance gets bad
-		for index, value in ipairs(otherBlocks) do
+
+		for index, value in ipairs(oreWhitelist) do
 			if value == data.name then
 				return true
 			end
 		end
+		return false
+
 	end
-	return false
 end
 
 local function selectCobblestone ()
@@ -91,63 +103,66 @@ end
 local function broadcastMessage (msg)
 	print(msg)
 	local modem = peripheral.wrap("right")
-	formattedMsg = {
+	local formattedMsg = {
 		["computerName"] = os.getComputerLabel(),
 		["message"] = msg 
 	}
 	modem.transmit(1, 1, formattedMsg)
 end
 
-local tunnelOffset = 0 
+-- ONLY FUNCTIONS & DATA FOUND ABOVE
+-- PROGRAM RUN ORDER STARTS HERE
+
+local tunnelOffset = 0
+WIRELESS = require("wireless")
 
 -- returns to where last left off
 print("Beginning tunnel traversal...")
-local loop1 = true
-while loop1 do
+while true do
 
-	-- checks that the turtle isn't going too far (AKA leaving loaded chunks)
+	-- checks that the turtle isn't going too far (IE leaving loaded chunks)
 	if tunnelOffset > 100 then
 		broadcastMessage("Tunnel finished.")
 		returnToStart(tunnelOffset)
-		return  -- terminate the program?
+		return
 	end
 
 	-- checks fuel level every step of the way
 	if not checkFuel(tunnelOffset + 2) then
 		broadcastMessage("Not enough fuel.")
 		returnToStart(tunnelOffset)
-		return  -- terminate the program?
+		return
 	end
 
 	-- keeps moving forward until it can't anymore
 	if turtle.forward() then
 		tunnelOffset = tunnelOffset + 1
 	else
-		loop1 = false
 		print("Obstruction detected. Beginning mining...")
+		break
 	end
 
 end
 
 -- begins mining operation
-local loop2 = true
-while loop2 do
+while true do
 
 	-- checks that the turtle isn't going too far (AKA leaving loaded chunks)
 	if tunnelOffset > 100 then
 		broadcastMessage("Tunnel finished.")
 		returnToStart(tunnelOffset)
-		return  -- terminate the program?
+		return
 	end
 
 	-- checks fuel level on every loop
 	if not checkFuel(tunnelOffset + 5) then
 		broadcastMessage("Not enough fuel.")
 		returnToStart(tunnelOffset)
-		return  -- terminate the program?
+		return
 	end
 
 	-- breaks the block in front and then takes its place
+	-- using while loop to properly handle blocks such as gravel
 	while not turtle.forward() do
 		turtle.dig()
 	end
@@ -164,11 +179,12 @@ while loop2 do
 	mineNearbyBlocks(true, false, true, true)
 
 	-- breaks the block in front and then takes its place
+	-- using while loop to properly handle blocks such as gravel
 	while not turtle.forward() do
 		turtle.dig()
 	end
 	tunnelOffset = tunnelOffset + 1
-	
+
 	-- mines all the blocks except for the one below
 	mineNearbyBlocks(true, false, true, true)
 
