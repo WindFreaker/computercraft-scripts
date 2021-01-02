@@ -45,6 +45,10 @@ while true do
 			colorSwitch = true
 		end
 
+		if msg.computerName == nil then
+			msg.computerName = ""
+		end
+
 		print("[" .. msg.computerId .. "] " .. msg.computerName)
 		term.setTextColor(colors.white)
 		print(msg.message)

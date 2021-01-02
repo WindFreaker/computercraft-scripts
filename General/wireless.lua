@@ -12,9 +12,6 @@ local function formatMessage (type, message)
 		["computerName"] = os.getComputerLabel(),
 		["message"] = message
 	}
-	if formatted.computerName == nil then
-		formatted.computerName = ""
-	end
 	return formatted
 end
 
