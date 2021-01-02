@@ -187,7 +187,7 @@ while true do
 
 	-- breaks the block below and then takes its place
 	-- while loop not needed as gravity blocks are not an issue
-	turtle.digDown()
+	SAFETY.digDown()
 	turtle.down()
 
 	-- mines all the blocks except for the one above
