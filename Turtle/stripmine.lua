@@ -167,10 +167,9 @@ while true do
 	mineNearbyBlocks(false, true, true, true)
 
 	-- breaks the block above and then takes its place
-	-- using while loop to properly handle gravity blocks such as gravel
-	while not turtle.up() do
-		SAFETY.digUp()
-	end
+	-- while loop not needed as gravity blocks are not an issue
+	SAFETY.digUp()
+	turtle.up()
 
 	-- mines all the blocks except for the one below
 	mineNearbyBlocks(true, false, true, true)
