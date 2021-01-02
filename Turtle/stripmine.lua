@@ -67,8 +67,7 @@ local function mineNearbyBlocks (up, down, left, right)
 		local existDown, dataDown = turtle.inspectDown()
 		if existDown and oreCheck(dataDown) then
 			SAFETY.digDown()
-			if selectCobblestone() and turtle.down() then
-				turtle.up()
+			if selectCobblestone() then
 				turtle.placeDown()
 			end
 		end
