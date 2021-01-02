@@ -1,4 +1,3 @@
-local safety = require "turtle.safety"
 -- https://raw.githubusercontent.com/WindFreaker/computercraft-tests/master/Turtle/stripmine.lua
 
 local function printAlert (msg)
