@@ -8,7 +8,7 @@ end
 local function formatMessage (type, message)
 	local formatted = {
 		["type"] = type,
-		["computerId"] = os.getComputerId(),
+		["computerId"] = os.getComputerID(),
 		["computerName"] = os.getComputerLabel(),
 		["message"] = message
 	}

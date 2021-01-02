@@ -1,5 +1,10 @@
 -- https://raw.githubusercontent.com/WindFreaker/computercraft-tests/master/Turtle/stripmine.lua
 
+local function printAlert (msg)
+	print(msg)
+	WIRELESS.sendAlert(msg)
+end
+
 local oreWhitelist = {
 	"minecraft:glass"
 }
@@ -13,7 +18,7 @@ local function oreCheck (data)
 
 		for index, value in ipairs(oreBlacklist) do
 			if value == data.name then
-				WIRELESS.sendAlert("Found " .. value)
+				printAlert("Found " .. value)
 				return false
 			end
 		end
@@ -100,16 +105,6 @@ local function returnToStart (dist)
 	turtle.turnLeft()
 end
 
-local function broadcastMessage (msg)
-	print(msg)
-	local modem = peripheral.wrap("right")
-	local formattedMsg = {
-		["computerName"] = os.getComputerLabel(),
-		["message"] = msg 
-	}
-	modem.transmit(1, 1, formattedMsg)
-end
-
 -- ONLY FUNCTIONS & DATA FOUND ABOVE
 -- PROGRAM RUN ORDER STARTS HERE
 
@@ -122,14 +117,14 @@ while true do
 
 	-- checks that the turtle isn't going too far (IE leaving loaded chunks)
 	if tunnelOffset > 100 then
-		broadcastMessage("Tunnel finished.")
+		printAlert("Tunnel finished.")
 		returnToStart(tunnelOffset)
 		return
 	end
 
 	-- checks fuel level every step of the way
 	if not checkFuel(tunnelOffset + 2) then
-		broadcastMessage("Not enough fuel.")
+		printAlert("Not enough fuel.")
 		returnToStart(tunnelOffset)
 		return
 	end
@@ -149,14 +144,14 @@ while true do
 
 	-- checks that the turtle isn't going too far (AKA leaving loaded chunks)
 	if tunnelOffset > 100 then
-		broadcastMessage("Tunnel finished.")
+		printAlert("Tunnel finished.")
 		returnToStart(tunnelOffset)
 		return
 	end
 
 	-- checks fuel level on every loop
 	if not checkFuel(tunnelOffset + 5) then
-		broadcastMessage("Not enough fuel.")
+		printAlert("Not enough fuel.")
 		returnToStart(tunnelOffset)
 		return
 	end
