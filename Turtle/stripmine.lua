@@ -6,11 +6,11 @@ local function printAlert (msg)
 end
 
 local oreWhitelist = {
-	"minecraft:glass"
+	"nothing:here"
 }
 
 local oreBlacklist = {
-	"forbidden_arcanus:stella_arcanum"
+	"nothing:here"
 }
 
 local function oreCheck (data)
@@ -107,6 +107,13 @@ end
 -- ONLY FUNCTIONS & DATA FOUND ABOVE
 -- PROGRAM RUN ORDER STARTS HERE
 
+local args = {...}
+if table.getn(args) ~= 1 then
+	print("Missing command line argument for length of tunnel")
+	return
+end
+local tunnelLength = args[1]
+
 local tunnelOffset = 0
 WIRELESS = require("wireless")
 SAFETY = require("safety")
@@ -116,8 +123,8 @@ print("Beginning tunnel traversal...")
 while true do
 
 	-- checks that the turtle isn't going too far (IE leaving loaded chunks)
-	if tunnelOffset > 100 then
-		printAlert("Tunnel finished")
+	if tunnelOffset > tunnelLength then
+		printAlert("Tunnel length goal reached")
 		returnToStart(tunnelOffset)
 		return
 	end
@@ -143,8 +150,8 @@ end
 while true do
 
 	-- checks that the turtle isn't going too far (AKA leaving loaded chunks)
-	if tunnelOffset > 100 then
-		printAlert("Tunnel finished")
+	if tunnelOffset > tunnelLength then
+		printAlert("Tunnel length goal reached")
 		returnToStart(tunnelOffset)
 		return
 	end
