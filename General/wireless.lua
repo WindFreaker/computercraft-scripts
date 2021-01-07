@@ -16,9 +16,14 @@ local function formatMessage (type, message)
 end
 
 local function broadcastAlert (message)
-	local formattedMsg = formatMessage("alert", message)
-	MODEM.transmit(1, 1, formattedMsg)
+	if MODEM_CHECK then
+		local formattedMsg = formatMessage("alert", message)
+		MODEM.transmit(1, 1, formattedMsg)
+	end
 end
+
+-- this variable is needed for properly run on computers without modems
+MODEM_CHECK = false
 
 -- this block of code is not a function
 -- it is needed for proper setup of the modem
@@ -27,6 +32,7 @@ local pList = peripheral.getNames()
 for index, value in ipairs(pList) do
 	if peripheral.getType(value) == "modem" then
 		MODEM = peripheral.wrap(value)
+		MODEM_CHECK = true
 	end
 end
 

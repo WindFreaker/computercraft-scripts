@@ -112,7 +112,7 @@ if table.getn(args) ~= 1 then
 	print("Missing command line argument for length of tunnel")
 	return
 end
-local tunnelLength = args[1]
+local tunnelLength = tonumber(args[1])
 
 local tunnelOffset = 0
 WIRELESS = require("wireless")
