@@ -46,7 +46,7 @@ local function selectCobblestone ()
 	return false
 end
 
-local function checkFuel (limit)
+local function fuelCheck (limit)
 	if turtle.getFuelLevel() < limit then
 		if turtle.refuel() then
 			return turtle.getFuelLevel() >= limit
@@ -54,6 +54,10 @@ local function checkFuel (limit)
 		return false
 	end
 	return true
+end
+
+local function inventoryCheck ()
+
 end
 
 local function mineNearbyBlocks (up, down, left, right)
@@ -130,7 +134,7 @@ while true do
 	end
 
 	-- checks fuel level every step of the way
-	if not checkFuel(tunnelOffset + 2) then
+	if not fuelCheck(tunnelOffset + 2) then
 		printAlert("Not enough fuel")
 		returnToStart(tunnelOffset)
 		return
@@ -157,7 +161,7 @@ while true do
 	end
 
 	-- checks fuel level on every loop
-	if not checkFuel(tunnelOffset + 5) then
+	if not fuelCheck(tunnelOffset + 5) then
 		printAlert("Not enough fuel")
 		returnToStart(tunnelOffset)
 		return
