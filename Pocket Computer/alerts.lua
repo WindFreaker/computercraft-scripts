@@ -20,39 +20,20 @@ end
 -- FUNCTIONS & STATIC DATA ABOVE
 -- PROGRAM RUN ORDER STARTS HERE
 
-local modem = peripheral.wrap("back")
-modem.open(1)
+WIRELESS = require("wireless")
 
 term.clear()
 term.setCursorPos(1, 2)
 
--- Christmas colors thing
-local colorSwitch = true
 
 while true do
 
 	setHeader()
 
-	local event, side, recFreq, replyFreq, msg, dist = os.pullEvent("modem_message")
+	local id, name, msg = WIRELESS.pullMsg("alert")
 
-	if msg.type == "alert" then
-
-		if colorSwitch then
-			term.setTextColor(colors.green)
-			colorSwitch = false
-		else
-			term.setTextColor(colors.red)
-			colorSwitch = true
-		end
-
-		if msg.computerName == nil then
-			msg.computerName = ""
-		end
-
-		print("[" .. msg.computerId .. "] " .. msg.computerName)
-		term.setTextColor(colors.white)
-		print(msg.message)
-
-	end
+	print("[" .. id .. "] " .. name)
+	term.setTextColor(colors.white)
+	print(msg)
 
 end

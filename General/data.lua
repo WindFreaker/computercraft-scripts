@@ -21,6 +21,9 @@ local function loadVariable(varName)
 	return value
 end
 
+-- FUNCTIONS & STATIC DATA ABOVE
+-- PROGRAM RUN ORDER STARTS HERE
+
 return {
 	save = saveVariable,
 	load = loadVariable

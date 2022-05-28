@@ -1,12 +1,18 @@
 -- https://raw.githubusercontent.com/WindFreaker/computercraft-tests/master/General/wireless.lua
 
 local function formatMessage(type, message)
+	local computerName = os.getComputerLabel()
+	if computerName == nil then
+		computerName = ""
+	end
+
 	local formatted = {
 		["type"] = type,
 		["computerId"] = os.getComputerID(),
-		["computerName"] = os.getComputerLabel(),
+		["computerName"] = computerName,
 		["message"] = message
 	}
+
 	return formatted
 end
 
@@ -22,7 +28,7 @@ local function receiveMessage(type)
 		while true do
 			local event, side, recFreq, replyFreq, resp, dist = os.pullEvent("modem_message")
 			if resp.type == type then
-				return resp.message
+				return resp.computerId, resp.computerName, resp.message
 			end
 		end
 	end

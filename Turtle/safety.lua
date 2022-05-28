@@ -15,7 +15,7 @@ end
 
 local function throwError(data)
 	local text = "Unsafe block detected: " .. data.name
-	WIRELESS.sendAlert(text)
+	WIRELESS.sendMsg(text)
 	error(text)
 end
 
@@ -52,7 +52,9 @@ local function safeDigDown()
 	end
 end
 
--- needs wireless.lua to ping home in case of bad situations
+-- FUNCTIONS & STATIC DATA ABOVE
+-- PROGRAM RUN ORDER STARTS HERE
+
 WIRELESS = require("wireless")
 
 return {
