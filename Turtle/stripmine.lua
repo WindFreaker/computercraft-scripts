@@ -111,6 +111,9 @@ end
 -- ONLY FUNCTIONS & DATA FOUND ABOVE
 -- PROGRAM RUN ORDER STARTS HERE
 
+WIRELESS = require("wireless")
+SAFETY = require("safety")
+
 local args = { ... }
 if table.getn(args) ~= 1 then
 	print("Missing command line argument for length of tunnel")
@@ -119,8 +122,6 @@ end
 local tunnelLength = tonumber(args[1])
 
 local tunnelOffset = 0
-WIRELESS = require("wireless")
-SAFETY = require("safety")
 
 -- returns to where last left off
 print("Beginning tunnel traversal...")
