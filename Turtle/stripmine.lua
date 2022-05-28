@@ -108,7 +108,7 @@ local function returnToStart(dist)
 	turtle.turnLeft()
 end
 
--- ONLY FUNCTIONS & DATA FOUND ABOVE
+-- FUNCTIONS & STATIC DATA ABOVE
 -- PROGRAM RUN ORDER STARTS HERE
 
 WIRELESS = require("wireless")
