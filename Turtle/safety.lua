@@ -4,7 +4,7 @@ local dangerousBlocks = {
 	"forbidden_arcanus:stella_arcanum"
 }
 
-local function checkDigSafety (data)
+local function checkDigSafety(data)
 	for index, value in ipairs(dangerousBlocks) do
 		if value == data.name then
 			return false
@@ -13,13 +13,13 @@ local function checkDigSafety (data)
 	return true
 end
 
-local function throwError (data)
+local function throwError(data)
 	local text = "Unsafe block detected: " .. data.name
 	WIRELESS.sendAlert(text)
 	error(text)
 end
 
-local function safeDig ()
+local function safeDig()
 	local exist, data = turtle.inspect()
 	if exist then
 		if checkDigSafety(data) then
@@ -30,7 +30,7 @@ local function safeDig ()
 	end
 end
 
-local function safeDigUp ()
+local function safeDigUp()
 	local exist, data = turtle.inspectUp()
 	if exist then
 		if checkDigSafety(data) then
@@ -41,7 +41,7 @@ local function safeDigUp ()
 	end
 end
 
-local function safeDigDown ()
+local function safeDigDown()
 	local exist, data = turtle.inspectDown()
 	if exist then
 		if checkDigSafety(data) then

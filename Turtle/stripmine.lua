@@ -1,6 +1,6 @@
 -- https://raw.githubusercontent.com/WindFreaker/computercraft-tests/master/Turtle/stripmine.lua
 
-local function printAlert (msg)
+local function printAlert(msg)
 	print(msg)
 	WIRELESS.sendAlert(msg)
 end
@@ -13,7 +13,7 @@ local oreBlacklist = {
 	"nothing:here"
 }
 
-local function oreCheck (data)
+local function oreCheck(data)
 	if data.tags["forge:ores"] then
 
 		for index, value in ipairs(oreBlacklist) do
@@ -35,7 +35,7 @@ local function oreCheck (data)
 	end
 end
 
-local function selectCobblestone ()
+local function selectCobblestone()
 	for a = 1, 16, 1 do
 		local data = turtle.getItemDetail(a)
 		if data ~= nil and data.name == "minecraft:cobblestone" then
@@ -46,7 +46,7 @@ local function selectCobblestone ()
 	return false
 end
 
-local function fuelCheck (limit)
+local function fuelCheck(limit)
 	if turtle.getFuelLevel() < limit then
 		if turtle.refuel() then
 			return turtle.getFuelLevel() >= limit
@@ -56,11 +56,11 @@ local function fuelCheck (limit)
 	return true
 end
 
-local function inventoryCheck ()
+local function inventoryCheck()
 
 end
 
-local function mineNearbyBlocks (up, down, left, right)
+local function mineNearbyBlocks(up, down, left, right)
 	if up then
 		local existUp, dataUp = turtle.inspectUp()
 		if existUp and oreCheck(dataUp) then
@@ -94,7 +94,7 @@ local function mineNearbyBlocks (up, down, left, right)
 	end
 end
 
-local function returnToStart (dist)
+local function returnToStart(dist)
 	print("Returning to starting position...")
 	turtle.turnLeft()
 	turtle.turnLeft()
@@ -111,7 +111,7 @@ end
 -- ONLY FUNCTIONS & DATA FOUND ABOVE
 -- PROGRAM RUN ORDER STARTS HERE
 
-local args = {...}
+local args = { ... }
 if table.getn(args) ~= 1 then
 	print("Missing command line argument for length of tunnel")
 	return

@@ -1,6 +1,6 @@
 -- https://raw.githubusercontent.com/WindFreaker/computercraft-tests/master/Pocket%20Computer/alerts.lua
 
-local function setHeader ()
+local function setHeader()
 
 	-- remember previous cursor position
 	local xPos, yPos = term.getCursorPos()

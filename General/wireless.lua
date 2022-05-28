@@ -5,7 +5,7 @@ local function openChannel(channel, type)
 	-- this function is still WIP
 end
 
-local function formatMessage (type, message)
+local function formatMessage(type, message)
 	local formatted = {
 		["type"] = type,
 		["computerId"] = os.getComputerID(),
@@ -15,7 +15,7 @@ local function formatMessage (type, message)
 	return formatted
 end
 
-local function broadcastAlert (message)
+local function broadcastAlert(message)
 	if MODEM_CHECK then
 		local formattedMsg = formatMessage("alert", message)
 		MODEM.transmit(1, 1, formattedMsg)
