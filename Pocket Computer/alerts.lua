@@ -25,7 +25,6 @@ WIRELESS = require("wireless")
 term.clear()
 term.setCursorPos(1, 2)
 
-
 while true do
 
 	setHeader()
