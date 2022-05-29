@@ -1,1 +1,0 @@
--- https://raw.githubusercontent.com/WindFreaker/computercraft-tests/master/Turtle/furnace.lua
