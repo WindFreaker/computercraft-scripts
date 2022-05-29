@@ -40,7 +40,7 @@ end
 MODEM_CHECK = false
 
 local pList = peripheral.getNames()
-for index, p in ipairs(peripheralList) do
+for index, p in ipairs(pList) do
 	if peripheral.getType(p) == "modem" then
 		MODEM = peripheral.wrap(p)
 		MODEM.open(1)
