@@ -26,5 +26,5 @@ end
 
 return {
 	save = saveVariable,
-	load = loadVariable
+	load = loadVariable,
 }

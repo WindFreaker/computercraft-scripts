@@ -60,5 +60,5 @@ WIRELESS = require("wireless")
 return {
 	dig = safeDig,
 	digUp = safeDigUp,
-	digDown = safeDigDown
+	digDown = safeDigDown,
 }
