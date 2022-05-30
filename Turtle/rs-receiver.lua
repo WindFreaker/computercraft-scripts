@@ -1,4 +1,4 @@
--- https://raw.githubusercontent.com/WindFreaker/computercraft-tests/master/Turtle/rs-receiver.lua
+-- wget https://raw.githubusercontent.com/WindFreaker/computercraft-tests/master/Turtle/rs-receiver.lua
 
 
 

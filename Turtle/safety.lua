@@ -1,4 +1,4 @@
--- https://raw.githubusercontent.com/WindFreaker/computercraft-tests/master/Turtle/safety.lua
+-- wget https://raw.githubusercontent.com/WindFreaker/computercraft-tests/master/Turtle/safety.lua
 
 local dangerousBlocks = {
 	"forbidden_arcanus:stella_arcanum"
