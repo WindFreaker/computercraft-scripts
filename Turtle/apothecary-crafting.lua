@@ -3,6 +3,7 @@
 -- some things of note
 -- the bucket should always be slot 1
 -- seeds should always occupy slot 2
+-- costs 6 fuel per craft
 
 local function apothecaryCrafting(ingredientCount)
     -- drop and retrieve the filled water bucket
@@ -14,7 +15,7 @@ local function apothecaryCrafting(ingredientCount)
 
     -- drop the crafting ingredients
     for i = 1, #ingredientCount, 1 do
-        local count = #ingredientCount[i]
+        local count = ingredientCount[i]
         turtle.select(i + 2)
         turtle.dropDown(count)
     end
@@ -44,7 +45,7 @@ end
 
 -- testing below
 
-for i = 1, 32, i do
+for i = 1, 32, 1 do
     fillBucket()
-    apothecaryCrafting({2, 2})
+    apothecaryCrafting({ 2, 2 })
 end
