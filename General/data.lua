@@ -1,4 +1,4 @@
--- wget https://raw.githubusercontent.com/WindFreaker/computercraft-tests/master/General/data.lua
+-- wget https://raw.githubusercontent.com/WindFreaker/computercraft-tests/main/General/data.lua
 
 local function getCaller()
     local fileName = debug.getinfo(3).source

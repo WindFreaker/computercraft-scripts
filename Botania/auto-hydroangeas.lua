@@ -1,4 +1,4 @@
--- wget https://raw.githubusercontent.com/WindFreaker/computercraft-tests/master/Botania/auto-hydroangeas.lua
+-- wget https://raw.githubusercontent.com/WindFreaker/computercraft-tests/main/Botania/auto-hydroangeas.lua
 
 -- this doesn't work yet (figuring out best placement for hydroangeas first)
 
