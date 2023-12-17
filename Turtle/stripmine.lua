@@ -1,4 +1,4 @@
--- wget https://raw.githubusercontent.com/WindFreaker/computercraft-tests/master/Turtle/stripmine.lua
+-- wget https://raw.githubusercontent.com/WindFreaker/computercraft-tests/main/Turtle/stripmine.lua
 
 local function printAlert(msg)
     print(msg)

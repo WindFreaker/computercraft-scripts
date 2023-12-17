@@ -1,4 +1,4 @@
--- wget https://raw.githubusercontent.com/WindFreaker/computercraft-tests/master/General/wireless.lua
+-- wget https://raw.githubusercontent.com/WindFreaker/computercraft-tests/main/General/wireless.lua
 
 local function formatMessage(type, message)
     local computerName = os.getComputerLabel()
