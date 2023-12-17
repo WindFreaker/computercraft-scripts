@@ -1,4 +1,4 @@
--- wget https://raw.githubusercontent.com/WindFreaker/computercraft-tests/master/Turtle/apothecary-crafting.lua
+-- wget https://raw.githubusercontent.com/WindFreaker/computercraft-tests/master/Botania/apothecary-crafting.lua
 
 -- some things of note
 -- the bucket should always be slot 1
